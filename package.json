@@ -1,7 +1,7 @@
 {
   "name": "vite-react-component-package-starter-kit",
   "private": true,
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A Vite + TypeScript starter kit for building and publishing React components as npm packages.",
   "author": {
     "name": "Hamid Yaftian",
