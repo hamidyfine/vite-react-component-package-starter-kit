@@ -11,7 +11,7 @@ export default defineConfig({
     build: {
         lib: {
             cssFileName: 'style',
-            entry: resolve(__dirname, join('lib', 'index.ts')),
+            entry: resolve(__dirname, join('src', 'index.ts')),
             fileName: 'index',
             formats: ['es', 'cjs'],
         },
@@ -31,12 +31,12 @@ export default defineConfig({
             all: true,
             enabled: true,
             exclude: [
-                'lib/test/**',
-                'lib/index.ts',
-                'lib/**/index.ts',
-                'lib/**/types.ts',
-                'lib/**/types.d.ts',
-                'lib/**/*.stories.tsx',
+                'src/test/**',
+                'src/index.ts',
+                'src/**/index.ts',
+                'src/**/types.ts',
+                'src/**/types.d.ts',
+                'src/**/*.stories.tsx',
                 '.storybook',
                 '*.config.*',
             ],
@@ -45,6 +45,6 @@ export default defineConfig({
         environment: 'jsdom',
         globals: true,
         mockReset: true,
-        setupFiles: './lib/test/setup.ts',
+        setupFiles: './src/test/setup.ts',
     },
 });

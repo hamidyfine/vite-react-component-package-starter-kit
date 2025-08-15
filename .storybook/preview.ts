@@ -1,4 +1,4 @@
-import '../lib/global.css';
+import '../src/global.css';
 
 import type { Preview } from '@storybook/react';
 
