@@ -1,5 +1,5 @@
 import type { RenderHookResult } from '@testing-library/react';
-import { renderHook } from '@testing-library/react';
+import { renderHook as renderHookLibrary } from '@testing-library/react';
 import type { PropsWithChildren } from 'react';
 
 import { ThemeProvider } from './theme-provider';
@@ -14,9 +14,9 @@ const ProvidersWrapper = ({ children }: PropsWithChildren) => {
     );
 };
 
-export const renderHookWrapper = (hook: () => unknown): RenderHookResult<any, unknown> => {
-    const wrapper = ({ children }: { children: React.ReactNode }) => (
+export const renderHookWrapper = <T,>(hook: () => T): RenderHookResult<T, unknown> => {
+    const wrapper = ({ children }: PropsWithChildren) => (
         <ProvidersWrapper>{children}</ProvidersWrapper>
     );
-    return renderHook(hook, { wrapper });
+    return renderHookLibrary(hook, { wrapper });
 };
