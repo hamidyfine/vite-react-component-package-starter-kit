@@ -3,19 +3,21 @@ import { join, resolve } from 'node:path';
 
 import react from '@vitejs/plugin-react-swc';
 import { defineConfig } from 'vite';
+import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js';
 import dts from 'vite-plugin-dts';
 
 import { peerDependencies } from './package.json';
 
 export default defineConfig({
     build: {
+        cssCodeSplit: false,
         lib: {
             cssFileName: 'style',
             entry: resolve(__dirname, join('src', 'index.ts')),
             fileName: 'index',
             formats: ['es', 'cjs'],
         },
-        minify: false,
+        minify: true,
         rollupOptions: {
             // Exclude peer dependencies from the bundle to reduce bundle size
             external: ['react/jsx-runtime', ...Object.keys(peerDependencies)],
@@ -24,6 +26,7 @@ export default defineConfig({
     },
     plugins: [
         react(),
+        cssInjectedByJsPlugin(),
         dts({ rollupTypes: true }), // Output .d.ts files
     ],
     test: {
